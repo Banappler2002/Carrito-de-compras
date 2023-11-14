@@ -8,68 +8,116 @@ Se trata del carrito de compras con el diseño responsive, ahi estan los siguien
   <h2>Carrito</h2>
   <div id="cart-items"></div>
   <div id="cart-total"></div>
-  <button id="checkout-btn">Checkout</button>
 </div>
 
 <!-- Vista de admin -->  
 <div id="admin">
-  <h2>Administración de Productos</h2>
+  <h2>Administración de productos</h2>
+  
+  <div id="product-list"></div>
   
   <div id="product-form">
-    <label>Nombre:</label>
-    <input type="text" id="product-name">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name">
     
-    <label>Precio:</label>  
-    <input type="number" id="product-price">
+    <label for="price">Precio:</label>  
+    <input type="number" id="price">
     
-    <label>Descripción:</label>
-    <textarea id="product-desc"></textarea>
+    <label for="color">Color:</label>
+    <input type="text" id="color">
     
-    <button id="add-product">Agregar Producto</button>
+    <button id="save-product">Guardar Producto</button>
   </div>
-  
-  <ul id="product-list"></ul>
 </div>
 
-# Codigo JS: 
-// Carrito
-let cart = [];
+# Codigo Javascript
+// Almacenamiento local
+let store = window.localStorage;
+
+// Obtener productos
+function getProducts() {
+  return JSON.parse(store.getItem('products')) || [];
+}
+
+// Guardar productos
+function saveProducts(products) {
+  store.setItem('products', JSON.stringify(products));
+}
 
 // CRUD de productos
-function addProduct(name, price, desc) {
-  // agregar lógica
-}
+const productList = document.getElementById('product-list');
+const productForm = document.getElementById('product-form');
 
-function editProduct(id, updates) {
-  // agregar lógica  
-}
-
-function deleteProduct(id) {
-  // agregar lógica
-}
-
-// Renderizar vistas
+// Mostrar productos
 function renderProducts() {
-  // agregar lógica
+  let products = getProducts();
+  
+  // Código para pintar productos...  
 }
+
+renderProducts();
+
+// Agregar producto
+productForm.addEventListener('submit', e => {
+  e.preventDefault();
+  
+  let products = getProducts();
+  
+  // obtener datos del formulario
+  
+  let newProduct = {
+    name, 
+    price,
+    color
+  };
+  
+  products.push(newProduct);
+  
+  saveProducts(products);
+  
+  renderProducts();
+}); 
+
+// Eliminar producto
+function deleteProduct(productId) {
+  let products = getProducts();
+  // filtrar productos
+  
+  saveProducts(products);
+  
+  renderProducts();
+}
+
+// Editar producto
+function editProduct(productId, updates) {
+  let products = getProducts();
+  
+  // encontrar y actualizar producto 
+  
+  saveProducts(products);
+  
+  renderProducts();
+}
+
+// Lógica del carrito
+let cart = [];
+
+// Agregar al carrito
+function addToCart(productId) {
+  // encontrar el producto
+  // agregar al carrito
+  
+  renderCart();
+}
+
+// Renderizar carrito
+const cartDiv = document.getElementById('cart');
 
 function renderCart() {
-  // agregar lógica  
+  // pintar productos del carrito
 }
 
-// Detectar clicks
-document.getElementById('add-product').onclick = () => {
-  // llamada a addProduct
-};
-
-// Persistencia local
-function saveCart() {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function loadCart() {
-  cart = JSON.parse(localStorage.getItem('cart')) || [];
-}
+renderCart();
 
 # Codigo CSS:
 /* Estilos responsive */
