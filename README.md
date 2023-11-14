@@ -1,8 +1,8 @@
 # Carrito-de-compras
 Se trata del carrito de compras con el diseño responsive, ahi estan los siguientes codigos, donde la condicion que se puede editar para poner atributos
 
-HTML:
-HTML:
+
+# Codigo HTML:
 <!-- Vista de usuario -->
 <div id="cart">
   <h2>Carrito</h2>
@@ -31,7 +31,7 @@ HTML:
   <ul id="product-list"></ul>
 </div>
 
-JS: 
+# Codigo JS: 
 // Carrito
 let cart = [];
 
@@ -71,7 +71,7 @@ function loadCart() {
   cart = JSON.parse(localStorage.getItem('cart')) || [];
 }
 
-CSS:
+# Codigo CSS:
 /* Estilos responsive */
 
 @media (max-width: 600px) {
